@@ -1,5 +1,5 @@
 {% set name = "copernicusmarine" %}
-{% set version = "1.0.9" %}
+{% set version = "1.0.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/copernicusmarine-{{ version }}.tar.gz
-  sha256: c68455f312d26cc281f581aa056d2d44118e32c9aeab1e83bfe50ba9fc5278b9
+  sha256: 7dade456de085e014a104ed48158cc1f5408bee90ec40a160e998d006594b259
 
 build:
   entry_points:
