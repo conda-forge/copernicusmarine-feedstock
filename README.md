@@ -144,5 +144,6 @@ Feedstock Maintainers
 =====================
 
 * [@nitreb](https://github.com/nitreb/)
+* [@renaudjester](https://github.com/renaudjester/)
 * [@slim0](https://github.com/slim0/)
 
