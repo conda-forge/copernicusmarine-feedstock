@@ -14,15 +14,15 @@ build:
     - copernicusmarine = copernicusmarine.command_line_interface.copernicus_marine:command_line_interface
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.9,<3.13
+    - python {{ python_min }}
     - poetry-core
     - pip
   run:
-    - python >=3.9,<3.13
+    - python >={{ python_min }},<3.13
     - click >=8.0.4
     - requests >=2.27.1
     - aiohttp >=3.8.5
@@ -47,6 +47,7 @@ test:
     - copernicusmarine --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://help.marine.copernicus.eu/en/collections/4060068-copernicus-marine-toolbox
