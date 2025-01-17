@@ -14,7 +14,7 @@ build:
     - copernicusmarine = copernicusmarine.command_line_interface.copernicus_marine:command_line_interface
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 2
 
 requirements:
   host:
@@ -61,3 +61,4 @@ extra:
     - renaudjester
     - uriii3
     - jordi-domingo
+    - Theophile-Varnier
