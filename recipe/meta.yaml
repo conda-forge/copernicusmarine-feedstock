@@ -1,5 +1,5 @@
 {% set name = "copernicusmarine" %}
-{% set version = "2.0.0" %}
+{% set version = "2.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/copernicusmarine-{{ version }}.tar.gz
-  sha256: b279ae3ac9e6c832d98eb4cf55bd2a167782d5ec695df70dc7e015cdddea631c
+  sha256: badbc5a9aa3d2c7d5952762447fda7b577467e186fd8607b29bbc6ce850f30e4
 
 build:
   entry_points:
     - copernicusmarine = copernicusmarine.command_line_interface.copernicus_marine:command_line_interface
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
 
 requirements:
   host:
