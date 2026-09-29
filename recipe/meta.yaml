@@ -19,7 +19,7 @@ outputs:
       entry_points:
         - copernicusmarine = copernicusmarine.command_line_interface.copernicus_marine:command_line_interface
       noarch: python
-      script: build.sh
+      script: build_copernicusmarine.sh
     requirements:
       host:
         - python {{ python_min }}
