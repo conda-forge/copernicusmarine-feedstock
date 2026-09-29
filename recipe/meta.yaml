@@ -2,7 +2,7 @@
 {% set version = "2.5.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name|lower }}-split
   version: {{ version }}
 
 source:
@@ -10,43 +10,68 @@ source:
   sha256: 9e2899aa55eb20da7be186379a32a4cdd995cb2655f82ba4f73cb003403678aa
 
 build:
-  entry_points:
-    - copernicusmarine = copernicusmarine.command_line_interface.copernicus_marine:command_line_interface
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
-requirements:
-  host:
-    - python {{ python_min }}
-    - poetry-core
-    - pip
-  run:
-    - python >={{ python_min }}
-    - click >=8.0.4,!=8.2.0,<8.3.0
-    - requests >=2.27.1
-    - xarray >=2024.10.0
-    - tqdm >=4.65.0
-    - zarr >=2.18.3
-    - dask-core >=2024.8.1
-    - boto3 >=1.26
-    - semver >=3.0.2
-    - pystac >=1.11.0
-    - numpy >=2.1.0
-    - pydantic >=2.9.1,<3.0.0
-    - h5netcdf >=1.4.0,<2.0.0
-    - h5py >=3.8.0
-    - arcosparse >=0.5.1,<0.6.0
+outputs:
+  - name: copernicusmarine
+    build:
+      entry_points:
+        - copernicusmarine = copernicusmarine.command_line_interface.copernicus_marine:command_line_interface
+      noarch: python
+      script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    requirements:
+      host:
+        - python {{ python_min }}
+        - poetry-core
+        - pip
+      run:
+        - python >={{ python_min }}
+        - click >=8.0.4,!=8.2.0,<8.3.0
+        - requests >=2.27.1
+        - xarray >=2024.10.0
+        - tqdm >=4.65.0
+        - zarr >=2.18.3
+        - dask-core >=2024.8.1
+        - boto3 >=1.26
+        - semver >=3.0.2
+        - pystac >=1.11.0
+        - numpy >=2.1.0
+        - pydantic >=2.9.1,<3.0.0
+        - h5netcdf >=1.4.0,<2.0.0
+        - h5py >=3.8.0
+        - arcosparse >=0.5.1,<0.6.0
+    test:
+      imports:
+        - copernicusmarine
+      commands:
+        - pip check
+        - copernicusmarine --help
+      requires:
+        - pip
+        - python {{ python_min }}
 
-test:
-  imports:
-    - copernicusmarine
-  commands:
-    - pip check
-    - copernicusmarine --help
-  requires:
-    - pip
-    - python {{ python_min }}
+  - name: copernicusmarine-extra
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python {{ python_min }}
+      run:
+        - python >={{ python_min }}
+        - {{ pin_subpackage('copernicusmarine', exact=True) }}
+        - rioxarray >=0.19.0
+        - geopandas >=1.1.4,<2.0.0
+        - netcdf4 <=1.7.2
+    test:
+      imports:
+        - copernicusmarine
+      commands:
+        - pip check
+        - copernicusmarine --help
+      requires:
+        - pip
+        - python {{ python_min }}
 
 about:
   home: https://help.marine.copernicus.eu/en/collections/4060068-copernicus-marine-toolbox
