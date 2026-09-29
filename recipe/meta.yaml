@@ -19,7 +19,7 @@ outputs:
       entry_points:
         - copernicusmarine = copernicusmarine.command_line_interface.copernicus_marine:command_line_interface
       noarch: python
-      script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+      script: build.sh
     requirements:
       host:
         - python {{ python_min }}
