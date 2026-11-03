@@ -1,5 +1,5 @@
 {% set name = "copernicusmarine" %}
-{% set version = "2.5.0" %}
+{% set version = "2.5.1" %}
 
 package:
   name: {{ name|lower }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/copernicusmarine-{{ version }}.tar.gz
-  sha256: 9e2899aa55eb20da7be186379a32a4cdd995cb2655f82ba4f73cb003403678aa
+  sha256: 0089e5c4b76f09d8307dbd0ec53b801f64029b5fa8d75c25e0e63c2d749c45b4
 
 build:
   noarch: python
